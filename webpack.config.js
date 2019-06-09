@@ -4,7 +4,7 @@ const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
   entry: {
-    server: ["babel-polyfill","./src/index.js"],
+    server: ["regenerator-runtime","./src/index.js"],
   },
   output: {
     path: path.join(__dirname, 'dist'),
