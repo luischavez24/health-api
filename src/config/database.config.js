@@ -1,17 +1,12 @@
 import mongoose from 'mongoose';
 
-const DATABASE_URL = 'mongodb+srv://luis:developer@notemaster-develop-s1ccj.mongodb.net/test?retryWrites=true';
-const DATABASE_NAME = 'health-exercise';
-
-mongoose.connect(DATABASE_URL, {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
-  dbName: DATABASE_NAME
+  dbName: process.env.MONGO_DATABASE
 })
-  .then(() => {
-    console.log('Connected to Mongo DB');
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
-// export default mongoose.connection;
+.then(() => {
+  console.log('Connected to Mongo DB');
+})
+.catch((err) => {
+  console.error(err);
+});
