@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
+    "start": "nodemon ./src/index.js --exec babel-node --",
     "dev": "nodemon --exec babel-node ./src/index.js"
   },
   "author": "Luis Chávez",
