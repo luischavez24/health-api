@@ -1,4 +1,4 @@
-import './config/database.config';
+import database from './config/database.config';
 import express from 'express';
 import bodyParser from 'body-parser';
 import routes from './routes';
@@ -16,4 +16,5 @@ app.use('/api', routes);
 
 app.listen(PORT, function() {
   console.log(`Server running at port ${PORT}!`);
+  database.configure();
 });

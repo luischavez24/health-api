@@ -1,22 +1,18 @@
 import { Schema, model } from 'mongoose';
 
 // Setup schema
-const exercisesSchema = new Schema({
+const benefitsSchema = new Schema({
   name: {
     type: String,
-    required: true
-  },
-  level: {
-    type:String,
     required: true
   },
   points: {
     type: Number,
     required: true
   },
-  units: {
+  description: {
     type: String,
-    required: true,
+    required: true
   },
   imageUrl: {
     type: String,
@@ -24,4 +20,4 @@ const exercisesSchema = new Schema({
   }
 });
 
-export default model('exercise', exercisesSchema, 'exercise');
+export default model('benefit', benefitsSchema, 'benefit');

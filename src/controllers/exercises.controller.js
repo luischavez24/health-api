@@ -3,19 +3,23 @@ import exercisesModel from '../models/exercises.model';
 class ExercisesController {
   async findExercises(request, response) {
     
-    const { skip = 0, limit = 20 } = request.query;
-    
-    console.log({ skip, limit })
+    const { skip , limit } = request.query;
 
     try {
-      const exercises = await exercisesModel.find()
-        .limit(parseInt(limit))
-        .skip(parseInt(skip));
+      let exercisesFinder = exercisesModel.find();
+      
+      if(limit) {
+        exercisesFinder = exercisesFinder.limit(parseInt(limit));
+      }
+      
+      if(skip) {
+        exercisesFinder = exercisesFinder.skip(parseInt(skip));
+      }
 
       response.status(200)
         .json({
           status: 'ok',
-          results: exercises
+          results: await exercisesFinder
         });
         
     } catch(err) {
