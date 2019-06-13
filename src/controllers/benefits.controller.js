@@ -1,24 +1,18 @@
-import benefitModel from '../models/exercises.model';
+import benefitModel from '../models/benefits.model';
 
 class BenefitsController {
   async findBenefits(request, response) {
-    const { skip , limit } = request.query;
+    const { skip = 0, limit = 20 } = request.query;
 
     try {
-      let benefitsFinder = benefitModel.find();
-      
-      if(limit) {
-        benefitsFinder = benefitsFinder.limit(parseInt(limit));
-      }
-      
-      if(skip) {
-        benefitsFinder = benefitsFinder.skip(parseInt(skip));
-      }
+      const benefits = await benefitModel.find()
+        .skip(parseInt(skip))
+        .limit(parseInt(limit));
 
       response.status(200)
         .json({
           status: 'ok',
-          results: await benefitsFinder
+          results: benefits
         });
         
     } catch(err) {

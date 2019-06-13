@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 
 function configure() {
-  mongoose.connect(process.env.MONGO_URL, {
+  const { MONGO_URL, MONGO_DATABASE } = process.env;
+  console.log({ MONGO_URL, MONGO_DATABASE })
+  mongoose.connect(MONGO_URL, {
     useNewUrlParser: true,
-    dbName: process.env.MONGO_DATABASE
+    dbName: MONGO_DATABASE
   })
   .then(() => {
     console.log('Connected to Mongo DB');
