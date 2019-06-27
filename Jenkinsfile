@@ -21,5 +21,7 @@ pipeline {
   }
   environment {
     CI = 'true'
+    MONGO_URL = 'mongodb+srv://luis:developer@notemaster-develop-s1ccj.mongodb.net/test?retryWrites=true'
+    MONGO_DATABASE = 'health-exercise'
   }
 }
