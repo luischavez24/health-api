@@ -13,6 +13,11 @@ pipeline {
         sh 'npm run build'
       }
     }
+    stage('Deliver') {
+      steps {
+        sh 'npm start'
+      }
+    }
   }
   environment {
     CI = 'true'
