@@ -1,8 +1,8 @@
 pipeline {
   agent {
     docker {
-      image 'node:6-alpine'
       args '-p 3000:3000'
+      image 'node:10-alpine'
     }
 
   }
@@ -15,7 +15,7 @@ pipeline {
     }
     stage('Deliver') {
       steps {
-        sh 'npm start'
+        sh 'npm run start'
       }
     }
   }
