@@ -9,6 +9,8 @@ pipeline {
   stages {
     stage('Building app') {
       steps {
+        sh 'ls -l'
+        sh 'sudo rm -rf ./*'
         sh 'npm install'
         sh 'npm run build'
       }
