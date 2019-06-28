@@ -1,5 +1,5 @@
 pipeline {
-  agent none
+  agent any
   stages {
     stage('Build image') {
       agent {
@@ -9,12 +9,13 @@ pipeline {
 
       }
       steps {
-        sh 'docker build -t health_api .'
+        sh 'echo "Compilada la imagen"'
       }
     }
     stage('Deliver') {
       steps {
-        sh 'docker-compose up -d'
+        sh 'ls /usr/local/bin'
+        sh '/usr/local/bin/docker-compose up -d'
       }
     }
   }
