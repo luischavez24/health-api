@@ -13,6 +13,12 @@ pipeline {
       }
     }
     stage('Deliver') {
+      agent {
+        node {
+          label 'jgldesa'
+        }
+
+      }
       steps {
         sh 'ls'
       }
