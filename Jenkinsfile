@@ -13,6 +13,7 @@ pipeline {
       }
     }
     stage('Deliver') {
+      agent any
       steps {
         step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'StartService', scale: 1, service: 'zookeeper'], useCustomDockerComposeFile: true])
       }
