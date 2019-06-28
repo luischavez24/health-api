@@ -1,5 +1,5 @@
 pipeline {
-  agent none
+  agent any
   stages {
     stage('Build image') {
       agent {
@@ -9,13 +9,13 @@ pipeline {
 
       }
       steps {
-        sh 'ls'
+        sh 'echo "Compilada la imagen"'
       }
     }
     stage('Deliver') {
-      agent any
       steps {
-        step([$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'StartService', scale: 1, service: 'zookeeper'], useCustomDockerComposeFile: true])
+        sh 'ls /usr/local/bin'
+        sh '/usr/local/bin/docker-compose up -d'
       }
     }
   }
