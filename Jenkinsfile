@@ -13,14 +13,9 @@ pipeline {
       }
     }
     stage('Deliver') {
-      agent {
-        node {
-          label 'jgldesa'
-        }
-
-      }
+      agent any
       steps {
-        sh 'ls'
+        sh 'docker-compose up -d'
       }
     }
   }
