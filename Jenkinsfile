@@ -13,7 +13,12 @@ pipeline {
       }
     }
     stage('Deliver') {
-      agent any
+      agent {
+        node {
+          label 'my-node'
+        }
+
+      }
       steps {
         sh 'docker-compose up -d'
       }
