@@ -1,28 +1,21 @@
 pipeline {
-  agent {
-    docker {
-      args '-p 3000:3000'
-      image 'node:10-alpine'
-    }
-
-  }
+  agent none
   stages {
-    stage('Building app') {
+    stage('Build image') {
+      agent {
+        dockerfile {
+          filename './DockerFile'
+        }
+
+      }
       steps {
-        sh 'npm install'
-        sh 'npm run build'
+        sh 'docker build -t health_api .'
       }
     }
     stage('Deliver') {
       steps {
-        sh 'npm run start'
+        sh 'docker-compose up -d'
       }
     }
-  }
-  environment {
-    CI = 'true'
-    MONGO_URL = 'mongodb+srv://luis:developer@notemaster-develop-s1ccj.mongodb.net/test?retryWrites=true'
-    MONGO_DATABASE = 'health-exercise'
-    PORT = '3000'
   }
 }
