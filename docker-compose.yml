@@ -1,7 +1,7 @@
 version: "2"
 services:
   jenkins:
-    image: health_api
+    image: e71f6765f222196dd3cd371ac59c06bfba23dfcf:latest
     environment:
       - MONGO_URL=mongodb+srv://luis:developer@notemaster-develop-s1ccj.mongodb.net/test?retryWrites=true
       - MONGO_DATABASE=health-exercise
