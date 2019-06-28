@@ -1,0 +1,11 @@
+version: "2"
+services:
+  jenkins:
+    image: health_api
+    environment:
+      - MONGO_URL=mongodb+srv://luis:developer@notemaster-develop-s1ccj.mongodb.net/test?retryWrites=true
+      - MONGO_DATABASE=health-exercise
+      - PORT=8080
+    user: root
+    ports:
+      - 8090:8080
