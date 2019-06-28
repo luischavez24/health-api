@@ -2,13 +2,19 @@ pipeline {
   agent any
   stages {
     stage('Build image') {
+      agent {
+        dockerfile {
+          filename './DockerFile'
+        }
+
+      }
       steps {
-        sh 'docker build -t health_api .'
+        sh 'ls'
       }
     }
     stage('Deliver') {
       steps {
-        sh 'docker-compose up -d'
+        sh 'ls'
       }
     }
   }
